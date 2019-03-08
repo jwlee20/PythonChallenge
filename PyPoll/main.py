@@ -21,6 +21,8 @@ with open(csvpath, newline='') as csvfile:
 	C = 0
 	L = 0
 	O = 0
+	allvotes = [K, C, L, O]
+	topvote=0
 	for row in reader:
 		votecount+=1
 		if row[2]=="Khan":
@@ -31,6 +33,9 @@ with open(csvpath, newline='') as csvfile:
 			L +=1 
 		if row[2]=="O'Tooley":
 			O +=1 
+	for i in len(allvotes):
+		if allvotes[i] > allvotes[i+1]:
+			topvote = allvotes[i]
 
 	print(f'Election Results')
 	print(f'____________________________________')
@@ -40,6 +45,6 @@ with open(csvpath, newline='') as csvfile:
 	print(f'Correy received {C} votes ({int(C/votecount*100)}%)')
 	print(f'Li received {L} votes ({int(L/votecount*100)}%)')
 	print(f'OTooley received {O} votes ({int(O/votecount*100)}%)')
-	print(f'Winner is ...')
+	print(f'Winner is ...{int(topvote)}')
 	print(f'____________________________________')
 
