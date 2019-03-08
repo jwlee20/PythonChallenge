@@ -19,7 +19,7 @@ with open(csvpath, newline='') as csvfile:
 	months=0
 	total=0
 	maxnumber=0
-	minnumber=1000000000000
+	minnumber=0
 	for row in reader:
 		months += 1
 		total += int(row[1])
@@ -36,4 +36,11 @@ with open(csvpath, newline='') as csvfile:
 # How do I formalize numbers? Add commas and .00?
 # How to connect local repo and online repo?
 # How to print the analysis to the terminal and
-# export a text file with the results.
+# export a text file with the results
+	text_file = open("output.txt","w")
+	text_file.write(f'Financial Analysis\n')
+	text_file.write(f'Total Months : {months}\n')
+	text_file.write(f'Total Profit/Losses : ${total}\n')
+	text_file.write(f'Your largest growth : ${maxnumber}\n')
+	text_file.write(f'Your largest decline : ${minnumber}\n')
+	text_file.close()

@@ -1,0 +1,5 @@
+Financial Analysis
+Total Months : 86
+Total Profit/Losses : $38382578
+Your largest growth : $1170593
+Your largest decline : $-1196225
