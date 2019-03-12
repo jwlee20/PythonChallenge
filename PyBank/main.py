@@ -33,10 +33,7 @@ with open(csvpath, newline='') as csvfile:
 	print(f'Total Profit/Losses : ${total}')
 	print(f'Your largest growth : ${maxnumber}')
 	print(f'Your largest decline : ${minnumber}')
-# How do I formalize numbers? Add commas and .00?
-# How to connect local repo and online repo?
-# How to print the analysis to the terminal and
-# export a text file with the results
+
 	text_file = open("output.txt","w")
 	text_file.write(f'Financial Analysis\n')
 	text_file.write(f'Total Months : {months}\n')
