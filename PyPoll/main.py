@@ -21,8 +21,6 @@ with open(csvpath, newline='') as csvfile:
 	C = 0
 	L = 0
 	O = 0
-	allvotes = [K, C, L, O]
-	topvote=0
 	for row in reader:
 		votecount+=1
 		if row[2]=="Khan":
@@ -32,11 +30,9 @@ with open(csvpath, newline='') as csvfile:
 		if row[2]=="Li":
 			L +=1 
 		if row[2]=="O'Tooley":
-			O +=1 
-	for i in len(allvotes):
-		if allvotes[i] > allvotes[i+1]:
-			topvote = allvotes[i]
-
+			O +=1
+	allvote = {"Khan":K, "Correy":C,"Li":L,"O'Tooley":O}
+	maximum = max(allvote, key=allvote.get)
 	print(f'Election Results')
 	print(f'____________________________________')
 	print(f'Total Votes: {votecount}')
@@ -45,6 +41,17 @@ with open(csvpath, newline='') as csvfile:
 	print(f'Correy received {C} votes ({int(C/votecount*100)}%)')
 	print(f'Li received {L} votes ({int(L/votecount*100)}%)')
 	print(f'OTooley received {O} votes ({int(O/votecount*100)}%)')
-	print(f'Winner is ...{int(topvote)}')
+	print(f'Winner is ... {maximum}')
 	print(f'____________________________________')
 
+	text_file = open("output.txt","w")
+	text_file.write(f'Election Results\n')
+	text_file.write(f'____________________________________\n')
+	text_file.write(f'Total Votes: {votecount}\n')
+	text_file.write(f'____________________________________\n')
+	text_file.write(f'Khan received {K} votes ({int(K/votecount*100)}%)\n')
+	text_file.write(f'Correy received {C} votes ({int(C/votecount*100)}%)\n')
+	text_file.write(f'Li received {L} votes ({int(L/votecount*100)}%)\n')
+	text_file.write(f'OTooley received {O} votes ({int(O/votecount*100)}%)\n')
+	text_file.write(f'Winner is ... {maximum}\n')
+	text_file.close()
